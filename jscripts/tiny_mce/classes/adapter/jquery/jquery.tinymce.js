@@ -156,7 +156,7 @@
 					init(self, settings);
 
 					$.each(delayedInits, function(i, settings) {
-						init(settings[0], );
+						init(settings[0], settings[1]);
 					});
 				}
 			});
