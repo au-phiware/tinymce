@@ -27,7 +27,7 @@
 
 		self.css('visibility', 'hidden'); // Hide textarea to avoid flicker
 
-		function init() {
+		function init(self, settings) {
 			var editors = [], initCount = 0;
 
 			// Apply patches to the jQuery object, only once
@@ -153,19 +153,19 @@
 					if (settings.script_loaded)
 						settings.script_loaded();
 
-					init();
+					init(self, settings);
 
-					$.each(delayedInits, function(i, init) {
-						init();
+					$.each(delayedInits, function(i, settings) {
+						init(settings[0], );
 					});
 				}
 			});
 		} else {
 			// Delay the init call until tinymce is loaded
 			if (lazyLoading === 1)
-				delayedInits.push(init);
+				delayedInits.push([self, settings]);
 			else
-				init();
+				init(self, settings);
 		}
 
 		return self;
